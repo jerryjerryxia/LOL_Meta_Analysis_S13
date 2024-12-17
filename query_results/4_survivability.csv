@@ -1,0 +1,149 @@
+id,tags,survivability
+Sylas,"['Mage', 'Assassin']",1665
+Galio,"['Tank', 'Mage']",1669
+Alistar,"['Tank', 'Support']",1687
+TahmKench,"['Support', 'Tank']",1657
+Tryndamere,"['Fighter', 'Assassin']",1663
+Darius,"['Fighter', 'Tank']",1639
+Yorick,"['Fighter', 'Tank']",1635
+Udyr,"['Fighter', 'Tank']",1640
+Sejuani,"['Tank', 'Fighter']",1611
+Trundle,"['Fighter', 'Tank']",1647
+Ryze,"['Mage', 'Fighter']",1592
+Fizz,"['Assassin', 'Fighter']",1585
+Kalista,['Marksman'],1552
+Zac,"['Tank', 'Fighter']",1634
+Gragas,"['Fighter', 'Mage']",1609
+Shyvana,"['Fighter', 'Tank']",1624
+Diana,"['Fighter', 'Mage']",1616
+Braum,"['Support', 'Tank']",1587
+Ornn,"['Tank', 'Fighter']",1608
+Talon,['Assassin'],1607
+Illaoi,"['Fighter', 'Tank']",1609
+Ivern,"['Support', 'Mage']",1587
+Katarina,"['Assassin', 'Mage']",1610
+Blitzcrank,"['Tank', 'Fighter']",1592
+Irelia,"['Fighter', 'Assassin']",1592
+Pantheon,"['Fighter', 'Assassin']",1619
+Akali,['Assassin'],1594
+Maokai,"['Tank', 'Mage']",1582
+Rammus,"['Tank', 'Fighter']",1581
+Sett,"['Fighter', 'Tank']",1606
+Olaf,"['Fighter', 'Tank']",1611
+Vladimir,['Mage'],1533
+MasterYi,"['Assassin', 'Fighter']",1609
+Karma,"['Mage', 'Support']",1537
+Thresh,"['Support', 'Fighter']",1531
+AurelionSol,['Mage'],1544
+TwistedFate,['Mage'],1520
+XinZhao,"['Fighter', 'Assassin']",1578
+Skarner,"['Fighter', 'Tank']",1591
+Pyke,"['Support', 'Assassin']",1602
+Zoe,"['Mage', 'Support']",1546
+Graves,['Marksman'],1550
+Qiyana,"['Assassin', 'Fighter']",1570
+Elise,"['Mage', 'Fighter']",1515
+Azir,"['Mage', 'Marksman']",1525
+Rengar,"['Assassin', 'Fighter']",1573
+Hecarim,"['Fighter', 'Tank']",1576
+Aatrox,"['Fighter', 'Tank']",1568
+Veigar,['Mage'],1505
+Kassadin,"['Assassin', 'Mage']",1536
+Taric,"['Support', 'Fighter']",1563
+Cassiopeia,['Mage'],1535
+Mordekaiser,['Fighter'],1554
+Malphite,"['Tank', 'Fighter']",1561
+Jhin,"['Marksman', 'Mage']",1526
+Ziggs,['Mage'],1502
+JarvanIV,"['Tank', 'Fighter']",1560
+Shaco,['Assassin'],1578
+DrMundo,"['Fighter', 'Tank']",1574
+Leblanc,"['Assassin', 'Mage']",1516
+Xerath,['Mage'],1512
+Ahri,"['Mage', 'Assassin']",1502
+Nasus,"['Fighter', 'Tank']",1562
+Morgana,"['Mage', 'Support']",1526
+Jayce,"['Fighter', 'Marksman']",1534
+MissFortune,['Marksman'],1504
+Bard,"['Support', 'Mage']",1545
+Lissandra,['Mage'],1510
+Urgot,"['Fighter', 'Tank']",1555
+Orianna,"['Mage', 'Support']",1481
+Poppy,"['Tank', 'Fighter']",1539
+Neeko,"['Mage', 'Support']",1515
+Draven,['Marksman'],1525
+Taliyah,"['Mage', 'Support']",1500
+Viktor,['Mage'],1502
+Teemo,"['Marksman', 'Assassin']",1494
+Tristana,"['Marksman', 'Assassin']",1502
+Syndra,"['Mage', 'Support']",1485
+Leona,"['Tank', 'Support']",1557
+Renekton,"['Fighter', 'Tank']",1553
+Garen,"['Fighter', 'Tank']",1570
+Volibear,"['Fighter', 'Tank']",1556
+Kayle,"['Fighter', 'Support']",1540
+Amumu,"['Tank', 'Mage']",1562
+Nautilus,"['Tank', 'Fighter']",1533
+Jax,"['Fighter', 'Assassin']",1560
+Caitlyn,['Marksman'],1450
+Rumble,"['Fighter', 'Mage']",1551
+Kaisa,['Marksman'],1514
+Lucian,['Marksman'],1514
+KogMaw,"['Marksman', 'Mage']",1486
+Vayne,"['Marksman', 'Assassin']",1466
+Sivir,['Marksman'],1484
+Nocturne,"['Assassin', 'Fighter']",1555
+Kayn,"['Fighter', 'Assassin']",1543
+Ekko,"['Assassin', 'Fighter']",1538
+Vi,"['Fighter', 'Assassin']",1543
+Zed,['Assassin'],1546
+Singed,"['Tank', 'Fighter']",1547
+Xayah,['Marksman'],1490
+Annie,['Mage'],1478
+Riven,"['Fighter', 'Assassin']",1516
+Camille,"['Fighter', 'Tank']",1538
+LeeSin,"['Fighter', 'Assassin']",1539
+Brand,['Mage'],1482
+Velkoz,['Mage'],1482
+Malzahar,"['Mage', 'Assassin']",1484
+Khazix,['Assassin'],1539
+Varus,"['Marksman', 'Mage']",1455
+RekSai,['Fighter'],1527
+Twitch,"['Marksman', 'Assassin']",1507
+Karthus,['Mage'],1479
+Jinx,['Marksman'],1508
+Yasuo,"['Fighter', 'Assassin']",1487
+Evelynn,"['Assassin', 'Mage']",1525
+Corki,['Marksman'],1465
+Warwick,"['Fighter', 'Tank']",1494
+Fiora,"['Fighter', 'Assassin']",1515
+Nidalee,"['Assassin', 'Mage']",1490
+MonkeyKing,"['Fighter', 'Tank']",1498
+Shen,['Tank'],1495
+Kindred,['Marksman'],1477
+Rakan,['Support'],1490
+Ashe,"['Marksman', 'Support']",1464
+Quinn,"['Marksman', 'Assassin']",1478
+Swain,"['Mage', 'Fighter']",1466
+Heimerdinger,"['Mage', 'Support']",1436
+Kennen,"['Mage', 'Marksman']",1481
+Ezreal,"['Marksman', 'Mage']",1433
+Aphelios,['Marksman'],1428
+Nunu,"['Tank', 'Fighter']",1506
+Lux,"['Mage', 'Support']",1421
+Gangplank,['Fighter'],1480
+Chogath,"['Tank', 'Mage']",1514
+Zilean,"['Support', 'Mage']",1427
+Fiddlesticks,"['Mage', 'Support']",1441
+Anivia,"['Mage', 'Support']",1390
+Zyra,"['Mage', 'Support']",1413
+Senna,"['Marksman', 'Support']",1398
+Sona,"['Support', 'Mage']",1363
+Soraka,"['Support', 'Mage']",1405
+Sion,"['Tank', 'Fighter']",1430
+Lulu,"['Support', 'Mage']",1400
+Nami,"['Support', 'Mage']",1369
+Janna,"['Support', 'Mage']",1335
+Yuumi,"['Support', 'Mage']",1311
+Gnar,"['Fighter', 'Tank']",1338
+Kled,"['Fighter', 'Tank']",1214
