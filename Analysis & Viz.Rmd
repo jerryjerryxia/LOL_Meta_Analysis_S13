@@ -1,0 +1,246 @@
+---
+title: "BAX421-ProjectPhase4"
+author: "Jerry"
+date: "2024-12-10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+setwd("X:/BAX421-Project")
+winrate <- read.csv("1_win_rate.csv")
+champ_pool <- read.csv("2_championpool_analysis_all_players.csv")
+champ_pool_cat <- read.csv("3_championpool_analysis_category.csv")
+sur <- read.csv("4_survivability.csv")
+expense <- read.csv("5_top_expense_analysis.csv")
+throw <- read.csv("6_throw_analysis.csv")
+ban <- read.csv("7_ban_rate_analysis.csv")
+lane <- read.csv("8_lane_analysis.csv")
+library(ggplot2)
+```
+
+```{r}
+# games taken from challenger (the highest ranking category in League of Legends) games on the Korean server, which is considered the most competitive region in the world. 
+
+# plotting win rate histogram to check if there are skewness or other non-normality in win rate data, which would imply unbalanceness in the meta. 
+winrate_plot <- ggplot(winrate, aes(x = winrate)) +
+  geom_histogram(binwidth = 0.01, fill = "skyblue", color = "black", alpha = 0.7) +
+  labs(
+    title = "Histogram of Champion Win Rates",
+    x = "Win Rate",
+    y = "Frequency"
+  ) +
+  theme_minimal()+
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    axis.title = element_text(size = 12))
+
+winrate_plot
+# overall, the meta is balanced, though the SD could be smaller. A few occurrences of win rate above 0.55 or below 0.45 need to be addressed. 
+```
+
+```{r}
+# champ_pool analysis: how many champions are players playing. This shines light on the diversity of viable champions in the meta. 
+champ_pool_plot <- ggplot(champ_pool, aes(x = championpoollabel)) + 
+  geom_bar(alpha = 0.8, fill = "gold") +
+  scale_fill_brewer(palette = "Set3") +
+  labs(
+    title = "Champion Pool Distribution",
+    x = "Champion Pool Label",
+    y = "Count",
+    fill = "Champion Pool"
+  ) +
+  theme_minimal()+
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    axis.title = element_text(size = 12))
+
+# histogram of number of champions played
+champ_pool$range <- ifelse(champ_pool$championsplayed <= 10, "Dense Section", "Tail Section")
+
+champ_pool_plot_facet <- ggplot(champ_pool, aes(x = championsplayed)) + 
+  geom_histogram(binwidth = 5, fill = "pink", color = "black", alpha = 0.7) +
+  facet_wrap(~range, scales = "free") +
+  labs(
+    title = "Histogram of Champs Played (Faceted)",
+    x = "Number of Champs Played",
+    y = "Frequency"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    axis.title = element_text(size = 12)
+  )
+
+champ_pool_winrate <- ggplot(champ_pool_cat, aes(x = win_rate, fill = championpoollabel)) + 
+  geom_histogram(binwidth = 0.01, alpha = 0.7) +
+  facet_wrap(~championpoollabel) +
+  labs(
+    title = "Histogram of Win Rate Across Different Champion Pool Labels",
+    x = "Win Rate",
+    y = "Frequency"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    axis.title = element_text(size = 12)
+  )
+champ_pool_plot
+champ_pool_plot_facet
+champ_pool_winrate
+# Overwhelming majority of players chose to stick with a few champs, but players who enjoys a lot of champs could also find success (as they have already reached challenger, the highest possible ranking category). However, it is noticeable that players who plays a lot of different champions tend to have lower win rate overall.  
+```
+
+```{r}
+# plotting histogram for survivability stats to see the distribution of champions in terms of basic survivability, a key component to their power level. 
+
+sur_plot <- ggplot(sur, aes(x = survivability)) +
+  geom_histogram(binwidth = 10, fill = "lavender", color = "black", alpha = 0.7) +
+  labs(
+    title = "Histogram of Champion Survivability Stats",
+    x = "Survivability Stats",
+    y = "Frequency"
+  ) +
+  theme_minimal()+
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    axis.title = element_text(size = 12))
+
+sur_plot
+
+# a left skew in terms of survivability stats - reflecting the impact of the durability update that occurred in the previous patch. This is agreeing with the overall player sentiment at the time: not only the champions became more durable, a considerable number of champions that was not perceived to be very durable are now more likely to survive dangerous situations. 
+```
+
+```{r}
+# looking at players who spent the most amount of gold in their games, we see that mage items are the most expensive
+# also, none of these players were able to purchase Rabadon's Deathcap, the most expensive and most powerful item for mages. This may imply that the game time at this level is not long enough for mage champions to get to full build. 
+# The problem, if any, could either lie in high expenses required to buy a mage full build, or the fact that the pace of the game is too fast. 
+expense[seq(3,10)]
+```
+
+```{r}
+# now looking at throw rate. this gives us an rough idea about the dynamics between teams with an advantage vs the team with a disadvantage. 
+
+throw <- subset(throw, throw$games_lost > 5)
+
+throw_plot <- ggplot(throw, aes(x = loss_rate_percentage)) +
+  geom_histogram(binwidth = 1, fill = "peachpuff", color = "black", alpha = 0.7) +
+  labs(
+    title = "Histogram of Throw Rates",
+    x = "Chance of losing a winning game",
+    y = "Frequency"
+  ) +
+  theme_minimal()+
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    axis.title = element_text(size = 12))
+
+throw_plot
+
+# keeping the come-back rate centering around 6%, we are looking at a heavy right skew, which is understandable.This means that most players in the disadvantaged team still have a fair chance to comeback. This, however, would require more careful examination because the only indicator of advantage here is the takedown of the first inhibitor, while there are a lot more other factors that can indicate advantage. 
+
+```
+
+```{r}
+
+# looking at ban rate. we already know by looking at the data that Aphelios and Elise are very overpowered at this point. Now we look at the overall distribution of ban rates. 
+
+# because in each game, only up to 10 out of 148 champions get banned, most champions will have low ban rate. In this sense, we also logged the ban rates for an alternative view. 
+
+banrate_plot <- ggplot(ban, aes(x = ban_rate)) +
+  geom_histogram(binwidth = 1, fill = "mintcream", color = "black", alpha = 0.7) +
+  labs(
+    title = "Histogram of of Champion Ban Rates",
+    x = "Ban Rate",
+    y = "Frequency"
+  ) +
+  theme_minimal()+
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    axis.title = element_text(size = 12))
+
+banrate_log_plot <- ggplot(ban, aes(x = ban_rate)) +
+  geom_histogram(binwidth = 0.1, fill = "mintcream", color = "black", alpha = 0.7) +
+  scale_x_log10() +
+  labs(
+    title = "Histogram of Log of Champion Ban Rates",
+    x = "Log Ban Rate",
+    y = "Frequency"
+  ) +
+  theme_minimal()+
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    axis.title = element_text(size = 12))
+
+# use boxplot to show if there are other outliers
+ban_rate_box <- ggplot(ban, aes(x = ban_rate)) +
+  geom_boxplot(fill = "darkorange", color = "black", alpha = 0.7) +
+  labs(
+    title = "Boxplot of Champion Ban Rates",
+    x = "Ban Rate",
+    y = "Frequency"
+  ) +
+  theme_minimal()+
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    axis.title = element_text(size = 12))
+
+# on a logged scale, there are no outliers
+ban_rate_box_log <- ggplot(ban, aes(x = ban_rate)) +
+  geom_boxplot(fill = "darkorange", color = "black", alpha = 0.7) +
+  scale_x_log10() + 
+  labs(
+    title = "Boxplot of Log Champion Ban Rates",
+    x = "Log Ban Rate",
+    y = "Frequency"
+  ) +
+  theme_minimal()+
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    axis.title = element_text(size = 12))
+
+banrate_plot
+banrate_log_plot
+ban_rate_box
+ban_rate_box_log
+# with the original data, there are too many outliers. 
+
+# both views are problematic because:
+# 1. saying there is no outlier is not accurate, as some champions are clearly terrorizing players so much they have to ban them 50% of the times. 
+# 2. saying there are too many outliers is also not accurate because the data is heavily right skewed. 
+# a good example of how visualization can be deceiving with unprocessed data. 
+```
+```{r}
+pdf("plots.pdf", width = 8, height = 6) # Open a PDF device
+print(winrate_plot)
+print(champ_pool_plot)
+print(champ_pool_plot_facet)
+print(champ_pool_winrate)
+print(sur_plot)
+print(throw_plot)
+print(banrate_plot)
+print(banrate_log_plot)
+print(ban_rate_box)
+print(ban_rate_box_log)
+dev.off() # Close the PDF device
+```
+
+```{r}
+plots <- list(winrate_plot, champ_pool_plot, champ_pool_plot_facet, champ_pool_winrate, sur_plot, throw_plot, banrate_plot, banrate_log_plot, ban_rate_box, ban_rate_box_log)
+
+file_names <- c("winrate_plot.png", "champ_pool_plot.png", "champ_pool_plot_facet.png", "champ_pool_winrate.png", "sur_plot.png", "throw_plot.png", "banrate_plot.png", "banrate_log_plot.png", "ban_rate_box.png", "ban_rate_box_log.png")
+
+for (i in seq_along(plots)) {
+  ggsave(filename = file_names[i], plot = plots[[i]], width = 8, height = 6, dpi = 300)
+}
+```
+
+
+
+
+
+
+
+
+
+
